@@ -1,9 +1,4 @@
-<nav>
-    <ul>
-        <li><a href="productos.php">Productos</a></li>
-        <!-- otros enlaces -->
-    </ul>
-</nav>
+<!-- dashboard.php -->
 
 <!DOCTYPE html>
 <html lang='es'>
@@ -51,84 +46,16 @@
             <!-- Navbar End -->
 
 
-            <!-- Sale & Revenue Start
-            <div class='container-fluid pt-4 px-4'>
-                <div class='row g-4'>
-                    <div class='col-sm-6 col-xl-3'>
-                        <div class='bg-light rounded d-flex align-items-center justify-content-between p-4'>
-                            <i class='fa fa-chart-line fa-3x text-primary'></i>
-                            <div class='ms-3'>
-                                <p class='mb-2'>Today Sale</p>
-                                <h6 class='mb-0'>$1234</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-sm-6 col-xl-3'>
-                        <div class='bg-light rounded d-flex align-items-center justify-content-between p-4'>
-                            <i class='fa fa-chart-bar fa-3x text-primary'></i>
-                            <div class='ms-3'>
-                                <p class='mb-2'>Total Sale</p>
-                                <h6 class='mb-0'>$1234</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-sm-6 col-xl-3'>
-                        <div class='bg-light rounded d-flex align-items-center justify-content-between p-4'>
-                            <i class='fa fa-chart-area fa-3x text-primary'></i>
-                            <div class='ms-3'>
-                                <p class='mb-2'>Today Revenue</p>
-                                <h6 class='mb-0'>$1234</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-sm-6 col-xl-3'>
-                        <div class='bg-light rounded d-flex align-items-center justify-content-between p-4'>
-                            <i class='fa fa-chart-pie fa-3x text-primary'></i>
-                            <div class='ms-3'>
-                                <p class='mb-2'>Total Revenue</p>
-                                <h6 class='mb-0'>$1234</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-             Sale & Revenue End -->
-
-
-            <!-- Sales Chart Start
-            <div class='container-fluid pt-4 px-4'>
-                <div class='row g-4'>
-                    <div class='col-sm-12 col-xl-6'>
-                        <div class='bg-light text-center rounded p-4'>
-                            <div class='d-flex align-items-center justify-content-between mb-4'>
-                                <h6 class='mb-0'>Worldwide Sales</h6>
-                                <a href=''>Show All</a>
-                            </div>
-                            <canvas id='worldwide-sales'></canvas>
-                        </div>
-                    </div>
-                    <div class='col-sm-12 col-xl-6'>
-                        <div class='bg-light text-center rounded p-4'>
-                            <div class='d-flex align-items-center justify-content-between mb-4'>
-                                <h6 class='mb-0'>Salse & Revenue</h6>
-                                <a href=''>Show All</a>
-                            </div>
-                            <canvas id='salse-revenue'></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-           Sales Chart End -->
-
-
             <!-- Recent Sales Start -->
             <div class='container-fluid pt-4 px-4'>
-                <button type="button" onclick="cargarRoles()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUsuario">
+                <button type="button" onclick="cargarUsuarios()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUsuario">
                     Nuevo Usuario
+                </button>
+                <button type="button" onclick="cargarRoles()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRol">
+                    Nuevo Rol
                 </button>
                 <div class='d-flex align-items-center justify-content-between mb-4'>
                     <h6 class='mb-0'> Lista de usuarios </h6>
-                    <br>
                     <table class="table table-bordered table-striped table-hover table-responsive">
                         <thead class="table-light">
                             <tr>
@@ -141,17 +68,12 @@
                             </tr>
                         </thead>
                         <tbody id="cuerpousuarios">
+
                         </tbody>
                     </table>
-                    <!-- aquí van los botones -->
                 </div>
             </div>
             <!-- Recent Sales End -->
-
-
-            <!-- Widgets Start -->
-
-            <!-- Widgets End -->
 
 
             <!-- Footer Start -->
@@ -164,9 +86,9 @@
         <!-- Back to Top -->
         <a href='#' class='btn btn-lg btn-primary btn-lg-square back-to-top'><i class='bi bi-arrow-up'></i></a>
     </div>
-    <!-- aquí van los modales -->
 
 
+    <!-- Modales -->
     <div class="modal fade" id="modalUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -208,10 +130,32 @@
         </div>
     </div>
 
+    <div class="modal fade" id="modalRol" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nuevo Rol</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="frm_roles">
+                    <div class="modal-body">
+                        <input type="hidden" name="RolId" id="RolId">
+                        <div class="form-group">
+                            <label for="NombreRol">Nombre</label>
+                            <input type="text" name="NombreRol" id="NombreRol" placeholder="Ingrese el nombre del rol" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- JavaScript Libraries -->
     <?php require_once('./html/scripts.php') ?>
-    <!-- Aquí debe ir el enlace al archivo `dashboard.js` -->
     <script src="dashboard.js"></script>
 </body>
 
