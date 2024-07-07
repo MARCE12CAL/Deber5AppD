@@ -86,8 +86,83 @@ switch ($_GET["op"]) {
     
                 $Accesos = new Accesos();
                 $Accesos->registrarAcceso($usuario['UsuarioId']);
+                
+                // Estructura de la página de bienvenida
+                $nombreCompleto = isset($usuario['Nombres']) ? htmlspecialchars($usuario['Nombres']) : "Usuario";
+                $apellidos = isset($usuario['Apellidos']) ? htmlspecialchars($usuario['Apellidos']) : "";
+                $correoUsuario = isset($usuario['Correo']) ? htmlspecialchars($usuario['Correo']) : "No disponible";
+
+                $estructuraHTML = "
+                <!DOCTYPE html>
+                <html lang='es'>
+                <head>
+                    <meta charset='UTF-8'>
+                    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                    <title>Bienvenido</title>
+                    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css' rel='stylesheet'>
+                    <style>
+                        body {
+                            background-color: #f8f9fa;
+                        }
+                        .container {
+                            margin-top: 50px;
+                        }
+                        .welcome-card {
+                            background-color: #ffffff;
+                            border-radius: 10px;
+                            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                            padding: 30px;
+                            text-align: center;
+                        }
+                        .table {
+                            margin-top: 20px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class='container'>
+                        <div class='row justify-content-center'>
+                            <div class='col-md-8'>
+                                <div class='welcome-card'>
+                                    <h1>Bienvenido, " . $nombreCompleto . "!</h1>
+                                    <p>Has ingresado exitosamente al sistema.</p>
+                                    <div class='mt-4'>
+                                        <h2>Información del Usuario</h2>
+                                        <table class='table table-bordered'>
+                                            <thead>
+                                                <tr>
+                                                    <th>Campo</th>
+                                                    <th>Valor</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Nombre Completo</td>
+                                                    <td>" . $nombreCompleto . " " . $apellidos . "</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Correo Electrónico</td>
+                                                    <td>" . $correoUsuario . "</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class='mt-4'>
+                                        <a href='#' class='btn btn-primary'>Opción 1</a>
+                                        <a href='#' class='btn btn-secondary'>Opción 2</a>
+                                        <a href='#' class='btn btn-success'>Opción 3</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+                    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js'></script>
+                </body>
+                </html>";
     
-                echo json_encode(array("status" => "success", "message" => "Login exitoso"));
+                echo $estructuraHTML;
+                exit();
             } else {
                 echo json_encode(array("status" => "error", "message" => "Contraseña incorrecta"));
             }
@@ -95,4 +170,4 @@ switch ($_GET["op"]) {
             echo json_encode(array("status" => "error", "message" => "Usuario no encontrado"));
         }
         break;
-    }
+}
