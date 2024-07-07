@@ -8,7 +8,7 @@ class Clase_Conectar
     private $server = "localhost";
     private $usu = "root";
     private $clave = "";  // Sin contraseña, asegurarse de que esté exactamente así, sin espacios.
-    private $base = "quinto";
+    private $base = "quinto4";
     private $port = 3307; // Especificar el puerto MySQL personalizado
 
     public function Procedimiento_Conectar()

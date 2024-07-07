@@ -1,3 +1,10 @@
+<nav>
+    <ul>
+        <li><a href="productos.php">Productos</a></li>
+        <!-- otros enlaces -->
+    </ul>
+</nav>
+
 <!DOCTYPE html>
 <html lang='es'>
 
@@ -120,13 +127,8 @@
                     Nuevo Usuario
                 </button>
                 <div class='d-flex align-items-center justify-content-between mb-4'>
-
-
                     <h6 class='mb-0'> Lista de usuarios </h6>
                     <br>
-
-
-
                     <table class="table table-bordered table-striped table-hover table-responsive">
                         <thead class="table-light">
                             <tr>
@@ -139,14 +141,10 @@
                             </tr>
                         </thead>
                         <tbody id="cuerpousuarios">
-
                         </tbody>
-
                     </table>
-                    <!-- aqui estaban los botones-->
-
+                    <!-- aquí van los botones -->
                 </div>
-
             </div>
             <!-- Recent Sales End -->
 
@@ -166,8 +164,7 @@
         <!-- Back to Top -->
         <a href='#' class='btn btn-lg btn-primary btn-lg-square back-to-top'><i class='bi bi-arrow-up'></i></a>
     </div>
-    <!-- aqui van los modales -->
-
+    <!-- aquí van los modales -->
 
 
     <div class="modal fade" id="modalUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -179,9 +176,7 @@
                 </div>
                 <form id="frm_usuarios">
                     <div class="modal-body">
-
                         <input type="hidden" name="UsuarioId" id="UsuarioId">
-
                         <div class="form-group">
                             <label for="Nombre">Nombre</label>
                             <input type="text" name="Nombre" id="Nombre" placeholder="Ingrese su nombre" class="form-control" required>
@@ -191,8 +186,8 @@
                             <input type="email" name="correo" id="correo" placeholder="Ingrese su correo" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="password">Contrsenia</label>
-                            <input type="password" name="password" id="password" placeholder="Ingrese su contrasenia" class="form-control" required>
+                            <label for="password">Contraseña</label>
+                            <input type="password" name="password" id="password" placeholder="Ingrese su contraseña" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="estado">Estado</label>
@@ -203,31 +198,21 @@
                             <select name="RolesId" id="RolesId" class="form-control" required>
                             </select>
                         </div>
-
-
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Guardar</button>
-
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
 
 
-
     <!-- JavaScript Libraries -->
     <?php require_once('./html/scripts.php') ?>
+    <!-- Aquí debe ir el enlace al archivo `dashboard.js` -->
     <script src="dashboard.js"></script>
-
-
-
-
-
-
 </body>
 
 </html>
